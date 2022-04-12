@@ -26,15 +26,31 @@ const editMap = (x,y,newTile) =>{
 
     if (chunk){
 
-        chunk.array[(x - chunk.startX) + y * chunk.sizeX] = newTile
+        chunk.array[(x - chunk.startX) + (y - chunk.startY) * chunk.sizeX] = newTile
 
         redrawChunk(chunk)
     }
 }
 
+const squarePaint = (firstPos, secondPos, newTile) => {
+    let startx = (firstPos[0] < secondPos[0]) ? firstPos[0] : secondPos[0] + 1
+    let starty = (firstPos[1] < secondPos[1]) ? firstPos[1] : secondPos[1]
+    let rows = Math.abs(firstPos[0] - secondPos[0]) + 2
+    let cols = Math.abs(firstPos[1] - secondPos[1]) + 1
+
+    let chunk = calculateSourceChunk(firstPos[0],firstPos[1])
+
+    for( j = 0; j < cols; j++){
+        for( i = 0; i < rows; i++){
+            chunk.array[(startx -1 + i - chunk.startX) + (starty + j - chunk.startY) * chunk.sizeX] = newTile
+        }
+    }
+
+    redrawChunk(chunk)
+}
+
 const populateDrawSidebar =() => {
-    for(var i = 0; i < 50; i++){
+    for(var i = 0; i < 63; i++){
         sidebar.appendChild(createImageElement(i))
     }
 }
-

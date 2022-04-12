@@ -61,10 +61,13 @@ const onMouseDown = (event) => {
     
     if (mapstate === 'waiting'){
         mapstate = 'drag'
-        dragtemp = [event.x, event.y]
+        firstPos = [event.x, event.y]
     } else if (mapstate === 'placing') {
         let [x, y] = calculateClickedTile(event.offsetX, event.offsetY)
         editMap(x, y, tiletemp)
+    } else if (mapstate === 'placingdrag'){
+        squarePaint(firstPos, calculateClickedTile(event.offsetX, event.offsetY), tiletemp)
+        mapstate = 'waiting'
     }
     
 }
@@ -73,8 +76,11 @@ const onMouseUp = (event) => {
     event.preventDefault()
     if (mapstate === 'drag'){
         mapstate = 'waiting'
-    } else if (mapstate === 'placing' && !event.shiftKey){
+    } else if (mapstate === 'placing' && !event.ctrlKey && !event.shiftKey){
         mapstate = 'waiting'
+    } else if (mapstate === 'placing' && event.ctrlKey){
+        mapstate = 'placingdrag'
+        firstPos = calculateClickedTile(event.offsetX, event.offsetY)
     }
     
 }
@@ -82,8 +88,8 @@ const onMouseUp = (event) => {
 const onMouseMove = (event) => {
     event.preventDefault()
     if (mapstate != 'drag') return
-    cameraPos = [cameraPos[0] + (dragtemp[0] - event.x) * scale, cameraPos[1] + (dragtemp[1] - event.y) * scale]
-    dragtemp = [event.x, event.y]
+    cameraPos = [cameraPos[0] + (firstPos[0] - event.x) * scale, cameraPos[1] + (firstPos[1] - event.y) * scale]
+    firstPos = [event.x, event.y]
     drawMain()
 }
 
@@ -203,7 +209,7 @@ let scale = 1
 
 let mapstate = 'waiting'
 let tiletemp = 1
-let dragtemp = [0,0]
+let firstPos = [0,0]
 
 let fullMap = document.createElement('canvas')
 let fullMapCtx = fullMap.getContext("2d")
