@@ -1,0 +1,45 @@
+//Route 1 = 20x36
+
+"route": [[248,248,248],[168,224,88],[160,208,248],[24,16,16]]
+
+//"0":empty
+//"1":rough
+//"2":pillar
+//"3":short grass
+//"4":lone grass
+//"5":tall grass
+//"6":sign
+//"7":fence
+//"8":Flower 1
+//"9":Flower 2
+//"10":roof small start
+//"11":roof small mid
+//"12":roof small end
+//"13":house F2 start
+//"14":house F2 1 window
+//"15":house F2 2 window
+//"16":house F2 end
+//"17":house F1 start
+//"18":house F1 door
+//"19":house F1 2 window
+//"20":house F1 end
+//"21":roof big start B
+//"22":roof big mid B
+//"23":roof big end B
+//"24":roof big start F
+//"25":roof big mid F
+//"26":roof big end F
+//"27":building TopF Start
+//"28":building TopF end
+//"29":building F+ two windows
+//"30":building F+ two windows brick
+//"31":building F+ window brick
+//"32":building F+ brick window
+//"33":bulding F1 start
+//"34":bulding F1 end
+//"35":shore L
+//"36":shore LU
+//"37":shore U
+//"38":shore RU
+//"39":shore R
+//"40":water
