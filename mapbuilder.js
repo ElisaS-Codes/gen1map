@@ -33,9 +33,9 @@ const editMap = (x,y,newTile) =>{
 }
 
 const squarePaint = (firstPos, secondPos, newTile) => {
-    let startx = (firstPos[0] < secondPos[0]) ? firstPos[0] : secondPos[0] + 1
+    let startx = (firstPos[0] < secondPos[0]) ? firstPos[0] + 1 : secondPos[0] + 1
     let starty = (firstPos[1] < secondPos[1]) ? firstPos[1] : secondPos[1]
-    let rows = Math.abs(firstPos[0] - secondPos[0]) + 2
+    let rows = Math.abs(firstPos[0] - secondPos[0]) + 1
     let cols = Math.abs(firstPos[1] - secondPos[1]) + 1
 
     let chunk = calculateSourceChunk(firstPos[0],firstPos[1])
@@ -50,7 +50,7 @@ const squarePaint = (firstPos, secondPos, newTile) => {
 }
 
 const populateDrawSidebar =() => {
-    for(var i = 0; i < 63; i++){
+    for(var i = 0; i < 70; i++){
         sidebar.appendChild(createImageElement(i))
     }
 }

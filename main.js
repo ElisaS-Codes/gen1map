@@ -69,7 +69,10 @@ const onMouseDown = (event) => {
         squarePaint(firstPos, calculateClickedTile(event.offsetX, event.offsetY), tiletemp)
         mapstate = 'waiting'
     }
-    
+
+    //a = calculateClickedTile(event.offsetX, event.offsetY)
+    //b = calculateSourceChunk(a[0],a[1])
+    //console.log(a[0]-b.startX,a[1]-b.startY);
 }
 
 const onMouseUp = (event) => {
@@ -235,6 +238,7 @@ async function start() {
     map = await loadJSon("resources/map.json")
     palletArray = await loadJSon("resources/pallete.json")
     areas = await loadJSon("resources/areas.json")
+    mainCCtx.imageSmoothingEnabled = false
 
     fullMap.width = map.sizeX * 16
     fullMap.height = map.sizeY * 16
