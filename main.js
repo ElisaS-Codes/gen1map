@@ -70,9 +70,13 @@ const onMouseDown = (event) => {
         mapstate = 'waiting'
     }
 
-    //a = calculateClickedTile(event.offsetX, event.offsetY)
-    //b = calculateSourceChunk(a[0],a[1])
-    //console.log(a[0]-b.startX,a[1]-b.startY);
+    try {
+    a = calculateClickedTile(event.offsetX, event.offsetY)
+    b = calculateSourceChunk(a[0],a[1])
+    console.log(a[0]-b.startX,a[1]-b.startY);
+    } catch {
+        
+    }
 }
 
 const onMouseUp = (event) => {
@@ -131,15 +135,42 @@ const drawMapChunk = (chunk) => {
     chunkImg.width = chunk.sizeX * 16
     chunkImg.height = chunk.sizeY * 16
 
+    //Draw Map
     for (let i = 0 ; i < chunk.array.length; i++) {
 
         chunkImgCtx.drawImage(
-            tileMap,
+            tileset,
             (chunk.array[i] % 10) * 16, Math.trunc(chunk.array[i] / 10) * 16, 16, 16,
             i % chunk.sizeX * 16, Math.trunc(i/chunk.sizeX) * 16, 16 , 16
         )
+
+        //Draw sprites
+        for(npc of chunk.npc){
+
+            chunkImgCtx.drawImage(
+                spriteset,
+                (npc.sprite % 10) * 16, Math.trunc(npc.sprite / 10) * 16, 16, 16,
+                npc.x  * 16, npc.y * 16, 16 , 16
+            )
+        }
+        for(item of chunk.items){
+            if(!item.hidden){
+                chunkImgCtx.drawImage(
+                    spriteset,
+                    0, 0, 16, 16,
+                    item.x * 16, item.y * 16, 16 , 16
+                )
+            } else {
+                hiddenMapCtx.drawImage(
+                    spriteset,
+                    0, 0, 16, 16,
+                    (item.x + chunk.startX) * 16, (item.y + chunk.startY) * 16, 16 , 16
+                )
+            }
+        }
     }
 
+    //Apply colors
     if (chunk.pallete != 'bw') {
 
         const tempImgData = chunkImgCtx.getImageData(0,0,chunkImg.width,chunkImg.height)
@@ -206,8 +237,8 @@ const drawMain = () => {
 }
 
 //Globals
-let tileMap, map, palletArray
-let cameraPos = [0,0]
+let tileset, spriteset, map, palletArray
+let cameraPos = [400,3500]
 let scale = 1
 
 let mapstate = 'waiting'
@@ -216,6 +247,10 @@ let firstPos = [0,0]
 
 let fullMap = document.createElement('canvas')
 let fullMapCtx = fullMap.getContext("2d")
+let spriteMap = document.createElement('canvas')
+let spriteMapCtx = fullMap.getContext("2d")
+let hiddenMap = document.createElement('canvas')
+let hiddenMapCtx = fullMap.getContext("2d")
 
 //docGolbals
 const mainC = document.getElementById('canvas')
@@ -234,14 +269,14 @@ mainC.onmouseleave = onMouseLeave
 const sidebar = document.getElementById('sidebar')
 
 async function start() {
-    tileMap = loadImage("resources/tilemapRed.png")
+    tileset = loadImage("resources/tilemapRed.png")
+    spriteset = loadImage("resources/spriteRed.png")
     map = await loadJSon("resources/map.json")
     palletArray = await loadJSon("resources/pallete.json")
-    areas = await loadJSon("resources/areas.json")
     mainCCtx.imageSmoothingEnabled = false
 
-    fullMap.width = map.sizeX * 16
-    fullMap.height = map.sizeY * 16
+    hiddenMap.width = spriteMap.width = fullMap.width = map.sizeX * 16
+    hiddenMap.height = spriteMap.height = fullMap.height = map.sizeY * 16
     drawMap()
     populateDrawSidebar()
 

@@ -2,12 +2,70 @@
 
 "route": [[248,248,248],[168,224,88],[160,208,248],[24,16,16]]
 
-for (var j = 0; j<36;j++){
-  for (var i = 0; i<40;i++){
-		a = a.concat("1, ")
-  }
-	a = a.concat("\n")
+for (var i = 0; i<40;i++){
+  a = a.concat("1, ")
 }
+
+
+for (var i = 0; i < a.length;i++){
+  if(i%20 == 0){
+    b.push(47,47,47,47)
+  }
+  b.push(a[i])
+}
+b.push(47,47,47,47)
+
+{
+    "name": "Route 22",
+    "pallete": "route",
+    "array": [],
+    "signs": [],
+    "npc": [],
+    "items": [],
+    "grass": [],
+    "water": [],
+    "startX": 0,
+    "startY": 0,
+    "sizeX": 0,
+    "sizeY": 0
+}
+
+{
+    "x":0,
+    "y":0,
+    "text":""
+}
+
+{
+    "name":null,
+    "sprite":1,
+    "x":0,
+    "y":0,
+    "text":"",
+    "text2":null,
+    "item":null,
+    "trainer":false
+}
+
+{
+    "x":0,
+    "y":0,
+    "item":"",
+    "rarity":0,
+    "type":"Consumable",
+    "hidden":false
+}
+
+
+{
+    "pokemon":"",
+    "games":"RBY",
+    "levels":[],
+    "rate":100,
+    "method":"",
+    "for":null
+},
+
 
 //"0":empty
 //"1":rough

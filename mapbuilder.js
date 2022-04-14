@@ -10,7 +10,7 @@ const createImageElement = (id) => {
     const elementCtx = element.getContext("2d")
     
     elementCtx.drawImage(
-        tileMap,
+        tileset,
         (id % 10) * 16, Math.trunc(id / 10) * 16, 16, 16,
         0, 0, 32, 32
     )
@@ -50,7 +50,7 @@ const squarePaint = (firstPos, secondPos, newTile) => {
 }
 
 const populateDrawSidebar =() => {
-    for(var i = 0; i < 70; i++){
+    for(var i = 0; i < 100; i++){
         sidebar.appendChild(createImageElement(i))
     }
 }
