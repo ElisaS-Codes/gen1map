@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Map</title>
+        
     </head>
     <body style="margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow: hidden;background-color: black;">
         <div id="box" style="display: grid; grid-template-columns: 1.5fr 0.5fr;grid-template-rows: 0.1fr 1.9fr;gap: 0px 5px;grid-auto-flow: row; height: 100vh;">
@@ -12,10 +13,10 @@
             </div>
             <div id="sidebar" style="background-color: dimgray; display: flexbox; overflow: auto;">
                 <p><a id="mapDownload" onclick="downloadMap()">Download map.json</a></p>
-                <p>
+                <p id="editorTabs" hidden>
                     <span onclick="showTab(0)">Info</span> 
-                    <span onclick="showTab(1)">Map</span> 
-                    <span onclick="showTab(2)">Inter</span> 
+                    <span onclick="showTab(1)">Tiles</span> 
+                    <span onclick="showTab(2)">Chunk</span> 
                     <span onclick="showTab(3)">NPC</span> 
                     <span onclick="showTab(4)">Etc</span>
                 </p>
@@ -27,13 +28,13 @@
                     <p>Tile ID:<span id="statTile"></span></p>
                     <p>Content<span id="statcontent"></span></p>
                 </div>
-                <div id="sidebarMap" hidden>
-                    <h1>Map Editor</h1>
+                <div id="sidebarTilePallete" hidden>
+                    <h1>Tile Pallete</h1>
                 </div>
-                <div id="sidebarInter" hidden>
-                    <h1>Interior Editor</h1>
+                <div id="sidebarChunkTool" hidden>
+                    <h1>Chunk Tools</h1>
                 </div>
-                <div id="sidebarNPC" hidden>
+                <div id="sidebarNPCTool" hidden>
                     <h1>NPC Editor</h1>
                     <form>
                         Name:<input id="formnpc" type="text" /><input id="formnpcnull" type="checkbox">null</input><br />
@@ -53,7 +54,7 @@
                         <input type="button" value="Place" onclick="placeNPC()" />
                     </form>
                 </div>
-                <div id="sidebarEtc" hidden>
+                <div id="sidebarEtcTool" hidden>
                     <h1>Item Editor</h1>
                     <form>
                         Item:<input id="formitem" type="text" /><br />
@@ -68,8 +69,9 @@
         </div>
 
         <div style="position: absolute;left: 0px;bottom:0px;background-color: lightgray;border-style: solid;">Scale: <span id="scaleShow">X1</span><span onclick="{scale=1;drawMain()}" id="scale">back to 1X</span></div>
-
-        <script type="text/javascript" src="main.js"></script>
-        <script type="text/javascript" src="mapbuilder.js"></script>
+        <script type="text/javascript" src="./modules/render.js"></script>
+        <script type="text/javascript" src="./modules/events.js"></script>
+        <script type="text/javascript" src="./modules/editor.js"></script>
+        <script type="text/javascript" src="./modules/main.js"></script>
     </body>
 </html>
