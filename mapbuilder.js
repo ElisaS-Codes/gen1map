@@ -54,12 +54,12 @@ const squarePaint = (firstPos, secondPos, newTile) => {
 }
 
 const populateSidebarMapTiles = () => {
-    for(var i = 100; i < 300; i++){
+    for(var i = 0; i < 100; i++){
         sidebarMap.appendChild(createImageElement(i))
     }
 }
 const populateSidebarInteriorTiles = () => {
-    for(var i = 100; i < 300; i++){
+    for(var i = 100; i < 200; i++){
         sidebarInter.appendChild(createImageElement(i))
     }
 }

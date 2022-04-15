@@ -42,15 +42,20 @@ const keyPress = (event) => {
 }
 
 const wheelScroll = (event) => {
-    scale += event.deltaY * 0.0005 
+
+    mod = event.deltaY > 0? 0.1 : -0.1
+
+    scale += mod
 
     if (scale < 0.1) {
         scale = 0.1
         return
     }
 
-    cameraPos[0] -= event.deltaY * 0.0005 * mainC.width / 2
-    cameraPos[1] -= event.deltaY * 0.0005 * mainC.height / 2
+    cameraPos[0] -= mod * mainC.width / 2
+    cameraPos[1] -= mod * mainC.height / 2
+
+    scaleShow.innerHTML = Math.round((1 / scale)*100)/100 + "X"
 
     drawMain()
 }
@@ -226,6 +231,9 @@ const drawMap = () => {
 
 const drawDrawInterior = (chunk) => {
 
+    interiorcameraPos = [0,0]
+    interiorscale = 1
+
     interiorMap.width = chunk.sizeX * 16
     interiorMap.height = chunk.sizeY * 16
     interiorMapCtx.clearRect(0,0,interiorMap.width,interiorMap.height)
@@ -261,6 +269,8 @@ const drawMain = () => {
 let tileset, spriteset, map, interiors, palletArray
 let cameraPos = [400,3500]
 let scale = 1
+let interiorcameraPos = [0,0]
+let interiorscale = 1
 
 let mapstate = 'waiting'
 let tiletemp = 1
@@ -269,18 +279,20 @@ let firstPos = [0,0]
 let fullMap = document.createElement('canvas')
 let fullMapCtx = fullMap.getContext("2d")
 let spriteMap = document.createElement('canvas')
-let spriteMapCtx = fullMap.getContext("2d")
+let spriteMapCtx = spriteMap.getContext("2d")
 let hiddenMap = document.createElement('canvas')
-let hiddenMapCtx = fullMap.getContext("2d")
+let hiddenMapCtx = hiddenMap.getContext("2d")
 let interiorMap = document.createElement('canvas')
 let interiorMapCtx = interiorMap.getContext("2d")
+
+const scaleShow = document.getElementById('scaleShow')
 
 //docGolbals
 const mainC = document.getElementById('canvas')
 const mainCCtx = mainC.getContext('2d')
 mainCCtx.imageSmoothingEnabled = false
 mainC.width = mainC.clientWidth;
-mainC.height = mainC.clientWidth;
+mainC.height = mainC.clientHeight;
 
 document.onkeydown = keyPress
 document.onwheel = wheelScroll

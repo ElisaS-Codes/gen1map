@@ -69,6 +69,15 @@ b.push(47,47,47,47)
     "for":null
 },
 
+{
+            "name":"",
+            "template":"",
+            "pallete":"",
+            "signs": [],
+            "npc": [],
+            "items": []
+        },
+
 
 //"0":empty
 //"1":rough
