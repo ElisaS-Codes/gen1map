@@ -15,7 +15,6 @@ const downloadMap = () => {
     var dlAnchorElem = document.getElementById('mapDownload');
     dlAnchorElem.setAttribute("href",     dataStr     );
     dlAnchorElem.setAttribute("download", "map.json");
-    dlAnchorElem.click();
 }
 
 //INTERACTION
@@ -71,9 +70,10 @@ const onMouseDown = (event) => {
     }
 
     try {
-    a = calculateClickedTile(event.offsetX, event.offsetY)
-    b = calculateSourceChunk(a[0],a[1])
-    console.log(a[0]-b.startX,a[1]-b.startY);
+        a = calculateClickedTile(event.offsetX, event.offsetY)
+        b = calculateSourceChunk(a[0],a[1])
+        //console.log(a[0]-b.startX,a[1]-b.startY);
+        updateStat(a,b.name,[a[0]-b.startX,a[1]-b.startY])
     } catch {
         
     }
@@ -224,6 +224,27 @@ const drawMap = () => {
     }
 }
 
+const drawDrawInterior = (chunk) => {
+
+    interiorMap.width = chunk.sizeX * 16
+    interiorMap.height = chunk.sizeY * 16
+    interiorMapCtx.clearRect(0,0,interiorMap.width,interiorMap.height)
+
+    interiorMapCtx.drawImage(
+        drawMapChunk(chunk),
+        0, 0
+    )
+    mainCCtx.drawImage(
+    interiorMap,
+    //cameraPos[0], cameraPos[1],
+    //interiorMap.width * scale ,interiorMap.height * scale,
+    //700,700,
+    //interiorMap.width * 10 ,interiorMap.height * 10
+    (mainC.width - interiorMap.width) / 2,
+    (mainC.height - interiorMap.height) / 2
+    )
+}
+
 const drawMain = () => {
 
     mainCCtx.clearRect(0, 0, mainC.width, mainC.height);
@@ -237,7 +258,7 @@ const drawMain = () => {
 }
 
 //Globals
-let tileset, spriteset, map, palletArray
+let tileset, spriteset, map, interiors, palletArray
 let cameraPos = [400,3500]
 let scale = 1
 
@@ -251,6 +272,8 @@ let spriteMap = document.createElement('canvas')
 let spriteMapCtx = fullMap.getContext("2d")
 let hiddenMap = document.createElement('canvas')
 let hiddenMapCtx = fullMap.getContext("2d")
+let interiorMap = document.createElement('canvas')
+let interiorMapCtx = interiorMap.getContext("2d")
 
 //docGolbals
 const mainC = document.getElementById('canvas')
@@ -266,19 +289,19 @@ mainC.onmouseup = onMouseUp
 mainC.onmousemove = onMouseMove
 mainC.onmouseleave = onMouseLeave
 
-const sidebar = document.getElementById('sidebar')
-
 async function start() {
     tileset = loadImage("resources/tilemapRed.png")
     spriteset = loadImage("resources/spriteRed.png")
     map = await loadJSon("resources/map.json")
+    interiors = await loadJSon("resources/interiors.json")
     palletArray = await loadJSon("resources/pallete.json")
     mainCCtx.imageSmoothingEnabled = false
 
     hiddenMap.width = spriteMap.width = fullMap.width = map.sizeX * 16
     hiddenMap.height = spriteMap.height = fullMap.height = map.sizeY * 16
     drawMap()
-    populateDrawSidebar()
+    populateSidebarMapTiles()
+    populateSidebarInteriorTiles()
 
     drawMain()
 }

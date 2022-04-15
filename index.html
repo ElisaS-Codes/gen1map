@@ -6,13 +6,64 @@
     <body style="margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow: hidden;background-color: black;">
         <div id="box" style="display: grid; grid-template-columns: 1.5fr 0.5fr;grid-template-rows: 0.1fr 1.9fr;gap: 0px 5px;grid-auto-flow: row; height: 100vh;">
             <div id="header" style="background-color: dimgray;">Red Interactive Map</div>
-            <div></div>
+            <div><strong style="color: red;" onclick="changeGame('R')">R</strong> - <strong style="color: blue;" onclick="changeGame('R')">B</strong> - <strong style="color: yellow;" onclick="changeGame('R')">Y</strong></div>
             <div id="main" style="background-color: dimgray;">
                 <canvas id="canvas" style="width: 100%;"></canvas>
             </div>
             <div id="sidebar" style="background-color: dimgray; display: flexbox;">
-                <p>Map Editor</p>
                 <p><a id="mapDownload" onclick="downloadMap()">Download map.json</a></p>
+                <p>
+                    <span onclick="showTab(0)">Info</span> 
+                    <span onclick="showTab(1)">Map</span> 
+                    <span onclick="showTab(2)">Inter</span> 
+                    <span onclick="showTab(3)">NPC</span> 
+                    <span onclick="showTab(4)">Etc</span>
+                </p>
+                <div id="sidebarInfo">
+                    <h1>Info</h1>
+                    <p>Map Coord:<span id="statMapCoord"></span></p>
+                    <p>Chunk:<span id="statChunk"></span></p>
+                    <p>Chunk Coords:<span id="statChunkCoord"></span></p>
+                    <p>Tile ID:<span id="statTile"></span></p>
+                    <p>Content<span id="statcontent"></span></p>
+                </div>
+                <div id="sidebarMap" hidden>
+                    <h1>Map Editor</h1>
+                </div>
+                <div id="sidebarInter" hidden>
+                    <h1>Interior Editor</h1>
+                </div>
+                <div id="sidebarNPC" hidden>
+                    <h1>NPC Editor</h1>
+                    <form>
+                        Name:<input id="formnpc" type="text" /><input id="formnpcnull" type="checkbox">null</input><br />
+                        Games:<input id="formnpcgames" type="text" /><br />
+                        Sprite:<input id="formrarity" type="text" /><br />
+                        Text1:<input id="formtext1" type="text" /><br />
+                        Text2:<input id="formtext2" type="text" /><input id="formtext2null" type="checkbox">null</input><br />
+                        Poke1:<input id="formnpcitem" type="text" /><input id="formtext2null" type="checkbox">null</input><br />
+                        Trainer:<input id="formhidden" type="checkbox">Trainer</input><br />
+                        Victory:<input id="formvictory" type="text" /><br />
+                        <input id="formpoke1null" type="checkbox" />Poke1:<input id="formpoke1" type="text" /><input id="formpoke1lvl" type="text" /><br />
+                        <input id="formpoke2null" type="checkbox" />Poke2:<input id="formpoke2" type="text" /><input id="formpoke2lvl" type="text" /><br />
+                        <input id="formpoke3null" type="checkbox" />Poke3:<input id="formpoke3" type="text" /><input id="formpoke3lvl" type="text" /><br />
+                        <input id="formpoke4null" type="checkbox" />Poke4:<input id="formpoke4" type="text" /><input id="formpoke4lvl" type="text" /><br />
+                        <input id="formpoke5null" type="checkbox" />Poke5:<input id="formpoke5" type="text" /><input id="formpoke5lvl" type="text" /><br />
+                        <input id="formpoke6null" type="checkbox" />Poke6:<input id="formpoke6" type="text" /><input id="formpoke6lvl" type="text" /><br />
+                        <input type="button" value="Place" onclick="placeNPC()" />
+                    </form>
+                </div>
+                <div id="sidebarEtc" hidden>
+                    <h1>Item Editor</h1>
+                    <form>
+                        Item:<input id="formitem" type="text" /><br />
+                        Games<input id="formitemgames" type="text" /><br />
+                        Rarity:<input id="formrarity" type="text" /><br />
+                        Type:<input id="formitemtype" type="text" /><br />
+                        Hidden:<input id="formhidden" type="checkbox">hidden</input>
+                        <input type="button" onclick="placeItem()">Place</input>
+                    </form>
+                </div>
             </div>
         </div>
 

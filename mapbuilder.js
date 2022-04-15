@@ -3,6 +3,10 @@ const clickDrawiTile = (id) => {
     tiletemp = id
 }
 
+const changeGame = (gameChar) => {
+    return
+}
+
 const createImageElement = (id) => {
     const element = document.createElement("canvas")
     element.width = 32
@@ -49,8 +53,65 @@ const squarePaint = (firstPos, secondPos, newTile) => {
     redrawChunk(chunk)
 }
 
-const populateDrawSidebar =() => {
-    for(var i = 0; i < 100; i++){
-        sidebar.appendChild(createImageElement(i))
+const populateSidebarMapTiles = () => {
+    for(var i = 100; i < 300; i++){
+        sidebarMap.appendChild(createImageElement(i))
     }
+}
+const populateSidebarInteriorTiles = () => {
+    for(var i = 100; i < 300; i++){
+        sidebarInter.appendChild(createImageElement(i))
+    }
+}
+
+const clearForms = () => {
+
+}
+
+const sidebarInfo = document.getElementById('sidebarInfo')
+const sidebarMap = document.getElementById('sidebarMap')
+const sidebarInter = document.getElementById('sidebarInter')
+const sidebarNPC = document.getElementById('sidebarNPC')
+const sidebarEtc = document.getElementById('sidebarEtc')
+
+const showTab = (tab) =>{
+
+    sidebarInfo.hidden = true
+    sidebarMap.hidden = true
+    sidebarInter.hidden = true
+    sidebarNPC.hidden = true
+    sidebarEtc.hidden = true
+    
+    clearForms()
+    switch(tab){
+        case 0:
+            sidebarInfo.hidden = false
+            break;
+        case 1:
+            sidebarMap.hidden = false
+            break;
+        case 2:
+            sidebarInter.hidden = false
+            break;
+        case 3:
+            sidebarNPC.hidden = false
+            break;
+        case 4:
+            sidebarEtc.hidden = false
+            break;
+    }
+}
+
+const statMapCoord = document.getElementById('statMapCoord')
+const statChunk = document.getElementById('statChunk')
+const statChunkCoord = document.getElementById('statChunkCoord')
+const statTile = document.getElementById('statTile')
+const statcontent = document.getElementById('statcontent')
+
+const updateStat = (mapCoords, chunkName, chunkCoords) => {
+    statMapCoord.innerHTML = mapCoords[0] + ";" + mapCoords[1]
+    statChunk.innerHTML = chunkName
+    statChunkCoord.innerHTML = chunkCoords[0] + ";" + chunkCoords[1]
+    let chunk = map.chunks.find(i => i.name === chunkName)
+    statTile.innerHTML = chunk.array[chunkCoords[1] * chunk.sizeX + chunkCoords[0]]
 }
