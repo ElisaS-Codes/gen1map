@@ -2,6 +2,7 @@ let viewportPos = [400,3500]
 let viewportScale = 1
 let interiorPos = [0,0]
 let interiorScale = 1
+let interiorSize = [0,0]
 
 const paintPallete = (imagedata, pallete) => {
     const data = imagedata.data
@@ -70,8 +71,8 @@ const drawMapChunk = (array, npcs, items, sizeX, sizeY, pallete) => { //TODO: fi
 
         chunkImgCtx.drawImage(
             tempTileset,
-            (chunk.array[i] % 10) * 16, Math.trunc(chunk.array[i] / 10) * 16, 16, 16,
-            i % chunk.sizeX * 16, Math.trunc(i/chunk.sizeX) * 16, 16 , 16
+            (array[i] % 10) * 16, Math.trunc(array[i] / 10) * 16, 16, 16,
+            i % sizeX * 16, Math.trunc(i/sizeX) * 16, 16 , 16
         )
     }
 
@@ -84,7 +85,7 @@ const drawMapChunk = (array, npcs, items, sizeX, sizeY, pallete) => { //TODO: fi
         )
     }
 
-    for(item of items){ 
+    for(item of items){  
         chunkImgCtx.drawImage(
             tempSpriteset,
             0, 0, 16, 16,
@@ -120,27 +121,23 @@ const drawMap = () => {
     }
 }
 
-const drawInterior = (chunk) => { //TODO: fix
+const drawInterior = (instanceName) => {
 
     interiorPos = [0,0]
     interiorScale = 1
 
-    interiorMap.width = chunk.sizeX * 16
-    interiorMap.height = chunk.sizeY * 16
-    interiorMapCtx.clearRect(0,0,interiorMap.width,interiorMap.height)
+    const instance = interiorsObj.instances.find(int => int.name == instanceName)
+    const template = interiorsObj.template.find(int => int.name == instance.template)
 
-    interiorMapCtx.drawImage(
-        drawMapChunk(chunk),
+    interiorSize = [template.sizeX,template.sizeY]
+
+    interiorMap.width = template.sizeX * 16
+    interiorMap.height = template.sizeY * 16
+    interiorMap.getContext('2d').clearRect(0,0,interiorMap.width,interiorMap.height)
+
+    interiorMap.getContext('2d').drawImage(
+        drawMapChunk(template.array,instance.npc,instance.items,template.sizeX,template.sizeY,instance.pallete),
         0, 0
-    )
-    viewport.getContext('2d').drawImage(
-    interiorMap,
-    //cameraPos[0], cameraPos[1],
-    //interiorMap.width * scale ,interiorMap.height * scale,
-    //700,700,
-    //interiorMap.width * 10 ,interiorMap.height * 10
-    (viewport.width - interiorMap.width) / 2,
-    (viewport.height - interiorMap.height) / 2
     )
 }
 
@@ -148,10 +145,21 @@ const drawViewport = () => {
 
     viewport.getContext('2d').clearRect(0, 0, viewport.width, viewport.height);
 
-    viewport.getContext('2d').drawImage(fullMap,
+    viewport.getContext('2d').drawImage(
+        fullMap,
         viewportPos[0], viewportPos[1],
         viewport.width * viewportScale, viewport.height * viewportScale,
         0, 0,
         viewport.width, viewport.height
     )
+
+    if(viewportState == 'interior' || viewportState == 'interiordrag'){
+        viewport.getContext('2d').drawImage(
+            interiorMap,
+            ((viewport.width - interiorMap.width * interiorScale) / 2) + interiorPos[0],
+            ((viewport.height - interiorMap.height * interiorScale) / 2) + interiorPos[1],
+            interiorMap.width * interiorScale,
+            interiorMap.height * interiorScale
+            )
+    }
 }

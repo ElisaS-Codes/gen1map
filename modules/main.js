@@ -14,7 +14,7 @@ const loadImage = (url) => {
 let tileSet, spriteSet, mapObj, interiorsObj, palleteArr
 
 let fullMap = document.createElement('canvas')
-let interiorWindow = document.createElement('canvas')
+let interiorMap = document.createElement('canvas')
 
 //docGolbals
 const viewport = document.getElementById('canvas')

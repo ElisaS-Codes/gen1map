@@ -21,12 +21,15 @@ b.push(47,47,47,47)
     "name": "Route 22",
     "pallete": "route",
     "array": [],
+    "interiors": [],
     "signs": [],
     "npc": [],
     "items": [],
     "grass": [],
+    "grassencounters": [],
     "water": [],
-    "enounters":[],
+    "waterencounters": [],
+    "fishing":[],
     "startX": 0,
     "startY": 0,
     "sizeX": 0,
@@ -40,14 +43,16 @@ b.push(47,47,47,47)
 }
 
 {
-    "name":null,
-    "sprite":1,
-    "x":0,
-    "y":0,
-    "text":"",
-    "text2":null,
-    "item":null,
-    "trainer":false
+    "name": false,
+    "sprite": 1,
+    "x": 0,
+    "y": 0,
+    "text": "",
+    "text2": false,
+    "item": false,
+    "trainer":false,
+    "loss":false,
+    "price":false
 }
 
 {
