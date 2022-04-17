@@ -101,6 +101,7 @@ const onMouseDown = (event) => {
             updateStat(tempCoords, sourceChunk)
         } else {
             viewportState = 'waiting'
+            instanceChunk = null
             drawViewport()
         }   
     }
@@ -178,10 +179,14 @@ const calculateClickedTile = (x,y) => {
 
 const calculateSourceChunk = (x,y) => {
 
-    for(chunk of mapObj.chunks){
-        if ((x >= chunk.startX && x <= chunk.startX + chunk.sizeX - 1) && (y >= chunk.startY && y <= chunk.startY + chunk.sizeY - 1)){
-            return chunk
+    if (viewportState != 'interior'){
+        for(chunk of mapObj.chunks){
+            if ((x >= chunk.startX && x <= chunk.startX + chunk.sizeX - 1) && (y >= chunk.startY && y <= chunk.startY + chunk.sizeY - 1)){
+                return chunk
+            }
         }
+    } else {
+        return instanceChunk
     }
     return null
 }
@@ -190,7 +195,11 @@ const updateStat = (mapCoords, chunk) => {
     let chunkCoords, chunkName, tempstats = ""
 
     if (chunk) {
-        chunkCoords = [mapCoords[0] - chunk.startX, mapCoords[1] - chunk.startY]
+        if (viewportState != 'interiordrag'){
+            chunkCoords = [mapCoords[0] - chunk.startX, mapCoords[1] - chunk.startY]
+        } else {
+            chunkCoords = mapCoords
+        }
         chunkName = chunk.name
 
         for (i of chunk.signs) {
@@ -201,7 +210,7 @@ const updateStat = (mapCoords, chunk) => {
 
         for (i of chunk.items) {
             if (i.x === chunkCoords[0] && i.y === chunkCoords[1]){
-                tempstats += "<p>ITEM: " + i.name + "</p>"
+                tempstats += "<p>ITEM: " + i.item + "</p>"
                 break
             }
         }
@@ -214,7 +223,16 @@ const updateStat = (mapCoords, chunk) => {
                 tempstats += "<p>First Dialogue: " + i.text + "</p>"
 
                 if (i.item)
-                    tempstats += "<p>Gives Item: " + i.item + "</p>"
+                    if (i.item.length == 1){
+                        tempstats += "<p>Gives Item: " + i.item[0].item + "</p>"
+                    } else {
+                        tempstats += "<p>Items for sale:<ul>"
+                        for (it of i.item) {
+                            tempstats += "<li>" + it.item + " - price:" + it.other + "</li>"
+                        }
+                        tempstats += "</ul></p>"    
+                    }
+                    
                 
                 if (i.trainer){
                     tempstats += "<p>Pokemons:<ul>"
@@ -232,42 +250,44 @@ const updateStat = (mapCoords, chunk) => {
 
                 if (i.text2)
                     tempstats += "<p>Second Dialogue: " + i.text2 + "</p>"
-
                 break
             }
         }
 
-        for (i of chunk.grass) {
-            if (((chunkCoords[0] >= i[0] && chunkCoords[0] <= i[2]) && (chunkCoords[1] >= i[1] && chunkCoords[1] <= i[3]))){
-                tempstats += "<p>Grass Encounters: <ul>"
-                for( enc of chunk.grassencounters) {
-                    tempstats += "<li>" + enc.pokemon + " - " + enc.levels + " - " + enc.rate + "</li>"
-                }
-                tempstats += "</ul></p>"
-                break
-            }
-        }
-
-        for (i of chunk.water) {
-            if (((chunkCoords[0] >= i[0] && chunkCoords[0] <= i[2]) && (chunkCoords[1] >= i[1] && chunkCoords[1] <= i[3]))){
-                if (chunk.waterencounters != []){
-                    tempstats += "<p>Surfing Encounters: <ul>"
-                    for( enc of chunk.waterencounters) {
+        if (chunk.grass){
+            for (i of chunk.grass) {
+                if (((chunkCoords[0] >= i[0] && chunkCoords[0] <= i[2]) && (chunkCoords[1] >= i[1] && chunkCoords[1] <= i[3]))){
+                    tempstats += "<p>Grass Encounters: <ul>"
+                    for( enc of chunk.grassencounters) {
                         tempstats += "<li>" + enc.pokemon + " - " + enc.levels + " - " + enc.rate + "</li>"
                     }
                     tempstats += "</ul></p>"
+                    break
                 }
-                if (chunk.fishing != []){
-                    tempstats += "<p>Fishing Encounters: <ul>"
-                    for( enc of chunk.fishing) {
-                        tempstats += "<li>" + enc.pokemon + " - " + enc.levels + " - " + enc.rate + "</li>"
-                    }
-                    tempstats += "</ul></p>"
-                }
-                break
             }
         }
 
+        if (chunk.water){
+            for (i of chunk.water) {
+                if (((chunkCoords[0] >= i[0] && chunkCoords[0] <= i[2]) && (chunkCoords[1] >= i[1] && chunkCoords[1] <= i[3]))){
+                    if (chunk.waterencounters != []){
+                        tempstats += "<p>Surfing Encounters: <ul>"
+                        for( enc of chunk.waterencounters) {
+                            tempstats += "<li>" + enc.pokemon + " - " + enc.levels + " - " + enc.rate + "</li>"
+                        }
+                        tempstats += "</ul></p>"
+                    }
+                    if (chunk.fishing != []){
+                        tempstats += "<p>Fishing Encounters: <ul>"
+                        for( enc of chunk.fishing) {
+                            tempstats += "<li>" + enc.pokemon + " - " + enc.levels + " - " + enc.rate + "</li>"
+                        }
+                        tempstats += "</ul></p>"
+                    }
+                    break
+                }
+            }    
+        }
     } else {
         chunkCoords = [0,0]
         chunkName = "Out of Bounds"

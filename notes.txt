@@ -1,5 +1,7 @@
 //TODO wastebasket on OAK's = 157
 
+//TODO Pokeschool wall of texts :/
+
 //Route 1 = 20x36
 
 "route": [[248,248,248],[168,224,88],[160,208,248],[24,16,16]]
@@ -8,6 +10,7 @@ for (var i = 0; i<40;i++){
   a = a.concat("1, ")
 }
 
+₽
 
 for (var i = 0; i < a.length;i++){
   if(i%20 == 0){
@@ -87,13 +90,13 @@ rarity:
 },
 
 {
-            "name":"",
-            "template":"",
-            "pallete":"",
-            "signs": [],
-            "npc": [],
-            "items": []
-        },
+    "name":"",
+    "template":"",
+    "pallete":"",
+    "signs": [],
+    "npc": [],
+    "items": []
+},
 
 
 //"0":empty

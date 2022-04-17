@@ -3,6 +3,7 @@ let viewportScale = 1
 let interiorPos = [0,0]
 let interiorScale = 1
 let interiorSize = [0,0]
+let instanceChunk = null
 
 const paintPallete = (imagedata, pallete) => {
     const data = imagedata.data
@@ -85,10 +86,12 @@ const drawMapChunk = (array, npcs, items, sizeX, sizeY, pallete) => { //TODO: fi
         )
     }
 
-    for(item of items){  
+    for(item of items){
+        let itemid = item.rarity > -1 ? item.rarity + 1 : item.other
+        itemid = item.hidden ? 7 : itemid
         chunkImgCtx.drawImage(
             tempSpriteset,
-            0, 0, 16, 16,
+            itemid * 16, 0, 16, 16,
             item.x * 16, item.y * 16, 16 , 16
         )
     }
@@ -130,6 +133,7 @@ const drawInterior = (instanceName) => {
     const template = interiorsObj.template.find(int => int.name == instance.template)
 
     interiorSize = [template.sizeX,template.sizeY]
+    instanceChunk = instance
 
     interiorMap.width = template.sizeX * 16
     interiorMap.height = template.sizeY * 16

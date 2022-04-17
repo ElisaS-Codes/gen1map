@@ -112,7 +112,7 @@
                     "rarity":-1,
                     "type":"Prop",
                     "hidden":false,
-                    "other":7
+                    "other":8
                 }
             ]
         },
@@ -294,27 +294,67 @@
             ]
         },
         {
-            "name":"Viridian House 1",
+            "name":"Viridian House",
             "template":"house1",
             "pallete":"viridian",
-            "signs": [],
-            "npc": [],
-            "items": []
-        },
-        {
-            "name":"Viridian House 2",
-            "template":"house1",
-            "pallete":"viridian",
-            "signs": [],
-            "npc": [],
+            "signs": [
+                
+            ],
+            "npc": [
+                
+            ],
             "items": []
         },
         {
             "name":"Pokemon School",
             "template":"Pokemon School",
             "pallete":"viridian",
-            "signs": [],
-            "npc": [],
+            "signs": [
+                {
+                    "x":8,
+                    "y":2,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":4,
+                    "y":1,
+                    "text":"The blackboard\ndescribes POKéMON\nSTATUS changes\nduring battles.",
+                    "picture":false
+                },
+                {
+                    "x":4,
+                    "y":5,
+                    "text":"Looked at the\nnotebook!",
+                    "picture":false
+                }
+            ],
+            "npc": [
+                {
+                    "name": false,
+                    "sprite": 1,
+                    "x": 5,
+                    "y": 2,
+                    "text": "Okay!\n\nBe sure to read\nthe blackboard\ncarefully!",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 62,
+                    "x": 4,
+                    "y": 6,
+                    "text": "Whew! I'm trying\nto memorize all\nmy notes.",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                }
+            ],
             "items": []
         },
         {
@@ -322,12 +362,180 @@
             "template":"PokeCenter",
             "pallete":"viridian",
             "signs": [],
-            "npc": [],
+            "npc": [
+                {
+                    "name": false,
+                    "sprite": 50,
+                    "x": 4,
+                    "y": 2,
+                    "text": "Welcome to our\nPOKéMON CENTER!\n\nWe heal your\nPOKéMON back to\nperfect health!",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 60,
+                    "x": 12,
+                    "y": 3,
+                    "text": "Welcome to the\nCable Club!\n\nThis area is\nreserved for 2\nfriends who are\nlinked by cable.",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 13,
+                    "x": 5,
+                    "y": 4,
+                    "text": "There's a POKéMON\nCENTER in every\ntown ahead.\n\nThey don't charge\nany money either!",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 51,
+                    "x": 11,
+                    "y": 6,
+                    "text": "You can use that\nPC in the corner.\n\nThe receptionist\ntold me. So Kind!",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 0,
+                    "x": 1,
+                    "y": 5,
+                    "text": "POKéMON CENTERs\nheal your tired,\nhurt or fainted\nPOKéMON!",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                }
+            ],
             "items": []
         },
         {
             "name":"Viridian PokeMart",
             "template":"PokeMart",
+            "pallete":"viridian",
+            "signs": [
+                {
+                    "x":5,
+                    "y":5,
+                    "text":"Wow! Tons of\nPOKéMON STUFF!",
+                    "picture":false
+                },
+                {
+                    "x":6,
+                    "y":5,
+                    "text":"Wow! Tons of\nPOKéMON STUFF!",
+                    "picture":false
+                },
+                {
+                    "x":7,
+                    "y":5,
+                    "text":"Wow! Tons of\nPOKéMON STUFF!",
+                    "picture":false
+                },
+                {
+                    "x":8,
+                    "y":5,
+                    "text":"Wow! Tons of\nPOKéMON STUFF!",
+                    "picture":false
+                }
+            ],
+            "npc": [
+                {
+                    "name": false,
+                    "sprite": 23,
+                    "x": 1,
+                    "y": 6,
+                    "text": "Hi there!\nMay I help you?",
+                    "text2": "Thank you!",
+                    "item": [
+                        {
+                            "x":1,
+                            "y":6,
+                            "item":"POKé BALL",
+                            "rarity":0,
+                            "type":"Consumable",
+                            "hidden":false,
+                            "other":"200₽"
+                        },
+                        {
+                            "x":1,
+                            "y":6,
+                            "item":"ANTIDOTE",
+                            "rarity":0,
+                            "type":"Consumable",
+                            "hidden":false,
+                            "other":"100₽"
+                        },
+                        {
+                            "x":1,
+                            "y":6,
+                            "item":"PARLYZ HEAL",
+                            "rarity":0,
+                            "type":"Consumable",
+                            "hidden":false,
+                            "other":"200₽"
+                        },
+                        {
+                            "x":1,
+                            "y":6,
+                            "item":"BURN HEAL",
+                            "rarity":0,
+                            "type":"Consumable",
+                            "hidden":false,
+                            "other":"250₽"
+                        }
+                    ],
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 42,
+                    "x": 6,
+                    "y": 7,
+                    "text": "This shop sells\nmany ANTIDOTEs",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 33,
+                    "x": 4,
+                    "y": 4,
+                    "text": "No! POTIONs are\nall sold out.",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                }
+            ],
+            "items": []
+        },
+        {
+            "name":"Viridian Gym",
+            "template":"Viridian Gym",
             "pallete":"viridian",
             "signs": [],
             "npc": [],
