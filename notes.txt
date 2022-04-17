@@ -17,6 +17,16 @@ for (var i = 0; i < a.length;i++){
 }
 b.push(47,47,47,47)
 
+rarity:
+-1: Prop item, other shows sprite
+0: common
+1: rare (but can be bought, ex: Vitamins)
+2: unique (ethers etc, everything that cant be bought)
+3: TMs
+4: Key Items
+5: Pokemons, other is lvl
+
+
 {
     "name": "Route 22",
     "pallete": "route",
@@ -39,7 +49,8 @@ b.push(47,47,47,47)
 {
     "x":0,
     "y":0,
-    "text":""
+    "text":"",
+    "picture":false
 }
 
 {
@@ -61,7 +72,8 @@ b.push(47,47,47,47)
     "item":"",
     "rarity":0,
     "type":"Consumable",
-    "hidden":false
+    "hidden":false,
+    "other":false
 }
 
 

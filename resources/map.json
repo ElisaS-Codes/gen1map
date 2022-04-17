@@ -25,28 +25,32 @@
                 {
                     "x": 3,
                     "y": 5,
-                    "text": "PLAYER's house"
+                    "text": "PLAYER's house",
+                    "picture":false
                 },
                 {
                     "x": 11,
                     "y": 5,
-                    "text": "RIVAL's house"
+                    "text": "RIVAL's house",
+                    "picture":false
                 },
                 {
                     "x": 7,
                     "y": 9,
-                    "text": "PALLET TOWN\nShades of your\njourney await!"
+                    "text": "PALLET TOWN\nShades of your\njourney await!",
+                    "picture":false
                 },
                 {
                     "x": 13,
                     "y": 13,
-                    "text": "OAK POKéMON\nRESEARCH LAB"
+                    "text": "OAK POKéMON\nRESEARCH LAB",
+                    "picture":false
                 }
             ],
             "npc": [
                 {
                     "name": false,
-                    "sprite": 1,
+                    "sprite": 11,
                     "x": 3,
                     "y": 8,
                     "text": "I'm rising\nPOKéMON too!\n\nWhen they get\nstrong, they can\nprotect me!",
@@ -58,7 +62,7 @@
                 },
                 {
                     "name": false,
-                    "sprite": 2,
+                    "sprite": 17,
                     "x": 11,
                     "y": 14,
                     "text": "Technology is\nincredible!\n\nYou can now store\nand recall items\nand POKéMON as\ndata via PC!",
@@ -146,24 +150,33 @@
                 {
                     "x": 9,
                     "y": 27,
-                    "text": "ROUTE 1\nPALLET TOWN -\nVIRIDIAN CITY"
+                    "text": "ROUTE 1\nPALLET TOWN -\nVIRIDIAN CITY",
+                    "picture":false
                 }
             ],
             "npc": [
                 {
                     "name":false,
-                    "sprite":3,
+                    "sprite":12,
                     "x":5,
                     "y":25,
                     "text":"Hi! I work at a\nPOKéMON MART.\n\nIt's a convenient\nshop, so please\nvisit us in\nVIRIDIAN CITY.\n\nI know, I'll give\nyou a sample!\n\nHere you go!",
                     "text2":"We also carry\n\nPOKé BALLs for\ncatcthing POKéMON!",
-                    "item":"Potion",
+                    "item":{
+                        "x":14,
+                        "y":4,
+                        "item":"Potion",
+                        "rarity":0,
+                        "type":"Consumable",
+                        "hidden":true,
+                        "other":false
+                    },
                     "trainer":false,
                     "loss":false,
                     "price":false
                 },{
                     "name":false,
-                    "sprite":3,
+                    "sprite":22,
                     "x":14,
                     "y":13,
                     "text":"See those ledges\nalong the road?\n\nIts a bit scary,\nbut you can jump\nfrom them.\n\nYou can get\nto PALLET TOWN\nquicker that way.",
@@ -236,28 +249,32 @@
                 {
                     "x":21,
                     "y":29,
-                    "text":"TRAINER TIPS\n\nThe battle moves\nof POKéMON are\nlimited by their\nPOWER POINTs, PP.\n\nTo replenish PP,\nrest your tired\nPOKéMON at a\nPOKéMON CENTER!"
+                    "text":"TRAINER TIPS\n\nThe battle moves\nof POKéMON are\nlimited by their\nPOWER POINTs, PP.\n\nTo replenish PP,\nrest your tired\nPOKéMON at a\nPOKéMON CENTER!",
+                    "picture":false
                 },
                 {
                     "x":17,
                     "y":17,
-                    "text":"VIRIDIAN CITY\nThe Eternally\nGreen Paradise"
+                    "text":"VIRIDIAN CITY\nThe Eternally\nGreen Paradise",
+                    "picture":false
                 },
                 {
                     "x":27,
                     "y":7,
-                    "text":"VIRIDIAN CITY\nPOKéMON GYM"
+                    "text":"VIRIDIAN CITY\nPOKéMON GYM",
+                    "picture":false
                 },
                 {
                     "x":19,
                     "y":1,
-                    "text":"TRAINER TIPS\n\nCatch POKéMON\nand expand your\ncollection!\n\nThe more you have,\nthe easier it is\nto fight!"
+                    "text":"TRAINER TIPS\n\nCatch POKéMON\nand expand your\ncollection!\n\nThe more you have,\nthe easier it is\nto fight!",
+                    "picture":false
                 }
             ],
             "npc": [
                 {
                     "name":false,
-                    "sprite":3,
+                    "sprite":12,
                     "x":28,
                     "y":24,
                     "text":"You want to know\nabout the 2 kinds\nof caterpillar\nPOKéMON?\n\n>YES\n\nCATERPIE has no\npoison, but\nWEEDLE does.\n\nWatch out for its\nPOISON STING!\n\n>NO\n\nOh, OK then!",
@@ -269,7 +286,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":3,
+                    "sprite":12,
                     "x":12,
                     "y":19,
                     "text":"Those POKé BALLs\nat your waist!\nYou have POKéMON!\n\nIt's great that\nyou can carry and\nuse POKéMON any\ntime, anywhere!",
@@ -281,7 +298,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":2,
+                    "sprite":17,
                     "x":6,
                     "y":23,
                     "text":"YAWN!\nI must have dozed\noff in the sun.\nI had this dream\nabout a DROWZEE\neating my dream.\nWhat's this?\nWhere did this TM\ncome from?\n\nThis is spooky!\nHere, you can\nhave this TM.",
@@ -293,7 +310,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":1,
+                    "sprite":21,
                     "x":17,
                     "y":9,
                     "text":"Oh Grandpa! Don't\nbe so mean!\nHe hasn't had his\ncoffee yet.",
@@ -305,7 +322,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":4,
+                    "sprite":28,
                     "x":17,
                     "y":5,
                     "text":"You can't go\nthrough here!\nThis is Private\nproperty!",
@@ -317,7 +334,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":4,
+                    "sprite":48,
                     "x":30,
                     "y":8,
                     "text":"This POKéMON GYM\nis always closed.\n\nI wonder who the\nLEADER is?",
@@ -335,7 +352,8 @@
                 "item":"Potion",
                 "rarity":0,
                 "type":"Consumable",
-                "hidden":true
+                "hidden":true,
+                "other":false
                 }
             ],
             "grass": [],
@@ -408,7 +426,8 @@
                 {
                     "x":7,
                     "y":11,
-                    "text":"POKéMON LEAGUE\nFront Gate"
+                    "text":"POKéMON LEAGUE\nFront Gate",
+                    "picture":false
                 }
             ],
             "npc": [
@@ -605,12 +624,14 @@
                 {
                     "x":7,
                     "y":65,
-                    "text":"ROUTE 2\nVIRIDIAN CITY -\nPEWTER CITY"
+                    "text":"ROUTE 2\nVIRIDIAN CITY -\nPEWTER CITY",
+                    "picture":false
                 },
                 {
                     "x":13,
                     "y":11,
-                    "text":"DIGLETT's CAVE"
+                    "text":"DIGLETT's CAVE",
+                    "picture":false
                 }
             ],
             "npc": [],
@@ -619,9 +640,10 @@
                     "x":15,
                     "y":45,
                     "item":"HP UP",
-                    "rarity":0,
-                    "type":"Consumable",
-                    "hidden":false
+                    "rarity":1,
+                    "type":"Vitamin",
+                    "hidden":false,
+                    "other":false
                 },
                 {
                     "x":15,
@@ -629,7 +651,8 @@
                     "item":"Moonstone",
                     "rarity":2,
                     "type":"Evo Stone",
-                    "hidden":false
+                    "hidden":false,
+                    "other":false
                 }
             ],
             "grass": [
@@ -735,33 +758,38 @@
                 {
                     "x":15,
                     "y":9,
-                    "text":"PEWTER MUSEUM OF SCIENCE"
+                    "text":"PEWTER MUSEUM OF SCIENCE",
+                    "picture":false
                 },
                 {
                     "x":11,
                     "y":17,
-                    "text":"PEWTER CITY\nPOKéMON GYM\nLEADER: BROCK\n\nThe Rock Solid\nPOKéMON Trainer!"
+                    "text":"PEWTER CITY\nPOKéMON GYM\nLEADER: BROCK\n\nThe Rock Solid\nPOKéMON Trainer!",
+                    "picture":false
                 },
                 {
                     "x":33,
                     "y":19,
-                    "text":"NOTICE!\n\nThieves have been\nstealing POKéMON\nfossils at MT.\nMOON! Please call\nPEWTER POLICE\nwith any info!"
+                    "text":"NOTICE!\n\nThieves have been\nstealing POKéMON\nfossils at MT.\nMOON! Please call\nPEWTER POLICE\nwith any info!",
+                    "picture":false
                 },
                 {
                     "x":25,
                     "y":23,
-                    "text":"PEWTER CITY\nA Stone Gray\nCity"
+                    "text":"PEWTER CITY\nA Stone Gray\nCity",
+                    "picture":false
                 },
                 {
                     "x":19,
                     "y":29,
-                    "text":"TRAINER TIPS\n\nAny POKéMON that\ntakes part in\nbattle, however\nsort, earns EXP!"
+                    "text":"TRAINER TIPS\n\nAny POKéMON that\ntakes part in\nbattle, however\nsort, earns EXP!",
+                    "picture":false
                 }
             ],
             "npc": [
                 {
                     "name":false,
-                    "sprite":5,
+                    "sprite":13,
                     "x":17,
                     "y":25,
                     "text":"There aren't many\nserious POKéMON\ntrainers here!\n\nThey're all like\nBUG CATCHERs,\nbut PEWTERS GYM's\nBROCK is totally\ninto it!",
@@ -773,7 +801,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":5,
+                    "sprite":23,
                     "x":24,
                     "y":25,
                     "text":"Psssst!\nDo you know what\nI'm doing?\n\n>YES\n\nThat's right!\nIt's hard work!\n\n>NO\n\nI'm spraying REPEL\nto keep POKéMON\nout of my garden!",
@@ -785,10 +813,10 @@
                 },
                 {
                     "name":false,
-                    "sprite":5,
+                    "sprite":13,
                     "x":27,
                     "y":17,
-                    "text":"Did you check out\nthe MUSEUM?\n\n>YES\n\nWeren't those\nfossils from MT.\nMOON amazing?",
+                    "text":"Did you check out\nthe MUSEUM?\n\n>YES\n\nWeren't those\nfossils from MT.\nMOON amazing?\n\n>NO\n\nReally?\nYou absolutely\nhave to go!\n\nIt's right here!\nYou have to pay\nto get in, but\nit's worth it!\nSee you around!",
                     "text2":false,
                     "item":false,
                     "trainer":false,
@@ -797,7 +825,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":6,
+                    "sprite":14,
                     "x":8,
                     "y":15,
                     "text":"It's roumored that\nCLEFAIRYs came\nfrom the moon!\n\nThey appeared\nafter MOON STONE\nfell on MT. MOON.",
@@ -809,7 +837,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":3,
+                    "sprite":12,
                     "x":35,
                     "y":16,
                     "text":"You are a Trainer\nright? BROCK's\nlooking for new challengers!\nFollow me!\n\nIf you have the\nright stuff, go\ntake on BROCK!",
@@ -840,13 +868,14 @@
                 {
                     "x":59,
                     "y":9,
-                    "text":"ROUTE 3\nMT. MOON AHEAD"
+                    "text":"ROUTE 3\nMT. MOON AHEAD",
+                    "picture":false
                 }
             ],
             "npc": [
                 {
                     "name":"LASS",
-                    "sprite":6,
+                    "sprite":34,
                     "x":16,
                     "y":9,
                     "text":"You looked at me,\ndidn't you?",
@@ -867,7 +896,7 @@
                 },
                 {
                     "name":"BUG CATCHER",
-                    "sprite":3,
+                    "sprite":22,
                     "x":10,
                     "y":6,
                     "text":"Hey! I met you in\nVIRIDIAN FOREST!\n",
@@ -893,7 +922,7 @@
                 },
                 {
                     "name":"YOUNGSTER",
-                    "sprite":3,
+                    "sprite":12,
                     "x":14,
                     "y":4,
                     "text":"Hi! I like shorts!\nThey're comfy and\neasy to wear!",
@@ -914,7 +943,7 @@
                 },
                 {
                     "name":"BUG CATCHER",
-                    "sprite":3,
+                    "sprite":12,
                     "x":19,
                     "y":5,
                     "text":"Are you a trainer?\nLet's fight!",
@@ -943,7 +972,7 @@
                 },
                 {
                     "name":"LASS",
-                    "sprite":6,
+                    "sprite":34,
                     "x":23,
                     "y":4,
                     "text":"That look you\ngave me, it's so\nintriguing!",
@@ -964,7 +993,7 @@
                 },
                 {
                     "name":"BUG CATCHER",
-                    "sprite":3,
+                    "sprite":22,
                     "x":24,
                     "y":6,
                     "text":"You can fight my\nnew POKéMON!",
@@ -985,7 +1014,7 @@
                 },
                 {
                     "name":"YOUNGSTER",
-                    "sprite":3,
+                    "sprite":32,
                     "x":22,
                     "y":9,
                     "text":"Hey! you are not\nwearing shorts!",
@@ -1002,7 +1031,7 @@
                 },
                 {
                     "name":"LASS",
-                    "sprite":6,
+                    "sprite":44,
                     "x":33,
                     "y":10,
                     "text":"Eek! Did you\ntouch me?",
@@ -1019,7 +1048,7 @@
                 },
                 {
                     "name":false,
-                    "sprite":5,
+                    "sprite":13,
                     "x":57,
                     "y":11,
                     "text":"Whew... I better\ntake a rest...\nGroan...\n\nThat tunnel from\nCERULEAN takes a\nlot out of you!",

@@ -4,25 +4,294 @@
             "name":"PLAYER's House",
             "template":"PLAYER's House",
             "pallete":"pallet",
-            "signs": [],
-            "npc": [],
+            "signs": [
+                {
+                    "x":1,
+                    "y":2,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":1,
+                    "y":3,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":4,
+                    "y":2,
+                    "text":"There's a movie\non the TV. Four boys\nare walking on\nrailroad tracks.\n\nI better go too.",
+                    "picture":false
+                },
+                {
+                    "x":4,
+                    "y":15,
+                    "text":"PLAYER is\nplaying the SNES!\n...Okay!\nIt's time to go!",
+                    "picture":false
+                }
+            ],
+            "npc": [
+                {
+                    "name": "MOM",
+                    "sprite": 10,
+                    "x": 6,
+                    "y": 5,
+                    "text": "MOM: PLAYER!\nYou should take a\nquick rest.\n\nMOM: Oh good!\nYou and your\nPOKéMON are\nlooking great!\nake care now!",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                }
+            ],
             "items": []
         },
         {
             "name":"RIVAL's House",
             "template":"House1",
             "pallete":"pallet",
-            "signs": [],
-            "npc": [],
-            "items": []
+            "signs": [
+                {
+                    "x":4,
+                    "y":1,
+                    "text":"A TOWN MAP.",
+                    "picture":false
+                },
+                {
+                    "x":1,
+                    "y":2,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":1,
+                    "y":3,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":8,
+                    "y":2,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":4,
+                    "y":5,
+                    "text":"It's a big map!\nThis is useful!",
+                    "picture":false
+                }
+            ],
+            "npc": [
+                {
+                    "name": false,
+                    "sprite": 25,
+                    "x": 3,
+                    "y": 5,
+                    "text": "Grandpa asked you\nto run an errand?\nHere, this will\nhelp you!",
+                    "text2": "Use the TOWN MAP\nto find out where\nyou are.",
+                    "item": {
+                        "x":3,
+                        "y":5,
+                        "item":"Town Map",
+                        "rarity":4,
+                        "type":"Key Item",
+                        "hidden":false,
+                        "other":false
+                    },
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                }
+            ],
+            "items": [
+                {
+                    "x":4,
+                    "y":5,
+                    "item":"Town Map",
+                    "rarity":-1,
+                    "type":"Prop",
+                    "hidden":false,
+                    "other":7
+                }
+            ]
         },
         {
             "name":"Prof Oak's Laboratory",
             "template":"Prof Oak's Laboratory",
             "pallete":"pallet",
-            "signs": [],
-            "npc": [],
-            "items": []
+            "signs": [
+                {
+                    "x":5,
+                    "y":1,
+                    "text":"Push START to\nopen the MENU!",
+                    "picture":false
+                },
+                {
+                    "x":6,
+                    "y":1,
+                    "text":"All POKéMON types\nhave a strong and\nweak points\nagainst others.",
+                    "picture":false
+                },
+                {
+                    "x":1,
+                    "y":2,
+                    "text":"There's an e-mail\nmessage here!\n\n...\n\nCalling all POKéMON trainers!\n\nThe elite trainers\nof POKéMON LEAGUE\nare ready to take\non all comers!\n\nBring your best\nPOKéMON and see\nhow you rate as a\ntrainer!\n\nPOKéMON LEAGUE HQ\nINDIGO PLATEAU\n\nPS: PROF. OAK,\nplease visit us!\n...",
+                    "picture":false
+                },
+                {
+                    "x":7,
+                    "y":2,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":8,
+                    "y":2,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":9,
+                    "y":2,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":10,
+                    "y":2,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":1,
+                    "y":8,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":2,
+                    "y":8,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":3,
+                    "y":8,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":4,
+                    "y":8,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":7,
+                    "y":8,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":8,
+                    "y":8,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":9,
+                    "y":8,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                },
+                {
+                    "x":10,
+                    "y":8,
+                    "text":"Crammed full of\nPOKéMON books!",
+                    "picture":false
+                }
+                
+            ],
+            "npc": [
+                {
+                    "name": false,
+                    "sprite": 16,
+                    "x": 3,
+                    "y": 11,
+                    "text": "I study POKéMON as PROF. OAK's AIDE.",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 16,
+                    "x": 8,
+                    "y": 11,
+                    "text": "I study POKéMON as PROF. OAK's AIDE.",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": false,
+                    "sprite": 11,
+                    "x": 2,
+                    "y": 10,
+                    "text": "PROF. OAK is the\nauthority on\nPOKéMON.\n\nMany POKéMON\ntrainers hold him\nin high regard!",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                },
+                {
+                    "name": "Professor Oak",
+                    "sprite": 20,
+                    "x": 6,
+                    "y": 4,
+                    "text": "OAK:Good to see\nyou! How is your\nPOKéDEX coming?\nHere, let me take\na look!\n\n",
+                    "text2": false,
+                    "item": false,
+                    "trainer":false,
+                    "loss":false,
+                    "price":false
+                }
+            ],
+            "items": [
+                {
+                    "x":7,
+                    "y":4,
+                    "item":"Charmander",
+                    "rarity":5,
+                    "type":"Pokemon",
+                    "hidden":false,
+                    "other":5
+                },
+                {
+                    "x":8,
+                    "y":4,
+                    "item":"Squirtle",
+                    "rarity":5,
+                    "type":"Pokemon",
+                    "hidden":false,
+                    "other":5
+                },
+                {
+                    "x":9,
+                    "y":4,
+                    "item":"Bulbasaur",
+                    "rarity":5,
+                    "type":"Pokemon",
+                    "hidden":false,
+                    "other":5
+                }
+            ]
         },
         {
             "name":"Viridian House 1",

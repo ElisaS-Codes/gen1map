@@ -138,7 +138,7 @@ const onMouseUp = (event) => {
 const onMouseMove = (event) => {
     event.preventDefault()
     if (viewportState == 'drag'){
-        viewportPos = [viewportPos[0] + (tempPos[0] - event.x) * viewportScale, viewportPos[1] + (tempPos[1] - event.y)]
+        viewportPos = [viewportPos[0] + (tempPos[0] - event.x) * viewportScale, viewportPos[1] + (tempPos[1] - event.y) * viewportScale]
         tempPos = [event.x, event.y]
     } else if (viewportState == 'interiordrag') {
         interiorPos = [interiorPos[0] - (tempPos[0] - event.x), interiorPos[1] - (tempPos[1] - event.y)]
