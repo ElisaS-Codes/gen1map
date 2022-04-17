@@ -1,4 +1,6 @@
 # Pokemon Generation 1 Interactive Map
+
+check it out! https://elisas-codes.github.io/gen1map/
  
 ## What
 This is an interactive map of the first gens of Pokemon, check every item, every sign and every npc, check their mons and find that TM you want from the search bar, or where you can capture your fave mons!

@@ -127,6 +127,7 @@ const onMouseUp = (event) => {
     if (sourceChunk) {
         for(interior of sourceChunk.interiors){
             if ((interior.x == tempCoords[0] - sourceChunk.startX) && (interior.y == tempCoords[1] - sourceChunk.startY)){
+                if (viewportState == 'interior') break
                 viewportState = 'interior'
                 drawInterior(interior.instance)
                 drawViewport()
