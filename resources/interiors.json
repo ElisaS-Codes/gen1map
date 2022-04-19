@@ -38,7 +38,7 @@
                     "y": 5,
                     "text": "MOM: PLAYER!\nYou should take a\nquick rest.\n\nMOM: Oh good!\nYou and your\nPOKéMON are\nlooking great!\nake care now!",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -90,7 +90,7 @@
                     "y": 5,
                     "text": "Grandpa asked you\nto run an errand?\nHere, this will\nhelp you!",
                     "text2": "Use the TOWN MAP\nto find out where\nyou are.",
-                    "item": {
+                    "items": {
                         "x":3,
                         "y":5,
                         "item":"Town Map",
@@ -221,7 +221,7 @@
                     "y": 11,
                     "text": "I study POKéMON as PROF. OAK's AIDE.",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -233,7 +233,7 @@
                     "y": 11,
                     "text": "I study POKéMON as PROF. OAK's AIDE.",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -245,7 +245,7 @@
                     "y": 10,
                     "text": "PROF. OAK is the\nauthority on\nPOKéMON.\n\nMany POKéMON\ntrainers hold him\nin high regard!",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -257,7 +257,7 @@
                     "y": 4,
                     "text": "OAK:Good to see\nyou! How is your\nPOKéDEX coming?\nHere, let me take\na look!\n\n",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -337,7 +337,7 @@
                     "y": 2,
                     "text": "Okay!\n\nBe sure to read\nthe blackboard\ncarefully!",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -349,7 +349,7 @@
                     "y": 6,
                     "text": "Whew! I'm trying\nto memorize all\nmy notes.",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -370,7 +370,7 @@
                     "y": 2,
                     "text": "Welcome to our\nPOKéMON CENTER!\n\nWe heal your\nPOKéMON back to\nperfect health!",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -382,7 +382,7 @@
                     "y": 3,
                     "text": "Welcome to the\nCable Club!\n\nThis area is\nreserved for 2\nfriends who are\nlinked by cable.",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -394,7 +394,7 @@
                     "y": 4,
                     "text": "There's a POKéMON\nCENTER in every\ntown ahead.\n\nThey don't charge\nany money either!",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -406,7 +406,7 @@
                     "y": 6,
                     "text": "You can use that\nPC in the corner.\n\nThe receptionist\ntold me. So Kind!",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -418,7 +418,7 @@
                     "y": 5,
                     "text": "POKéMON CENTERs\nheal your tired,\nhurt or fainted\nPOKéMON!",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -464,7 +464,7 @@
                     "y": 6,
                     "text": "Hi there!\nMay I help you?",
                     "text2": "Thank you!",
-                    "item": [
+                    "items": [
                         {
                             "x":1,
                             "y":6,
@@ -513,7 +513,7 @@
                     "y": 7,
                     "text": "This shop sells\nmany ANTIDOTEs",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false
@@ -525,7 +525,7 @@
                     "y": 4,
                     "text": "No! POTIONs are\nall sold out.",
                     "text2": false,
-                    "item": false,
+                    "items": false,
                     "trainer":false,
                     "loss":false,
                     "price":false

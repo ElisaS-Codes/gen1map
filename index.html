@@ -12,13 +12,12 @@
                 <canvas id="canvas" style="width: 100%; height: 100%;"></canvas>
             </div>
             <div id="sidebar" style="background-color: dimgray; display: flexbox; overflow: auto;">
-                <p><a id="mapDownload" onclick="downloadMap()">Download map.json</a></p>
+                <p><input type="button" value="Download map.json" onclick="downloadMap()" /></p>
                 <p id="editorTabs" hidden>
                     <span onclick="showTab(0)">Info</span> 
                     <span onclick="showTab(1)">Tiles</span> 
                     <span onclick="showTab(2)">Chunk</span> 
-                    <span onclick="showTab(3)">NPC</span> 
-                    <span onclick="showTab(4)">Etc</span>
+                    <span onclick="showTab(3)">Etc</span>
                 </p>
                 <div id="sidebarInfo">
                     <h1>Info</h1>
@@ -33,36 +32,89 @@
                 </div>
                 <div id="sidebarChunkTool" hidden>
                     <h1>Chunk Tools</h1>
-                </div>
-                <div id="sidebarNPCTool" hidden>
-                    <h1>NPC Editor</h1>
-                    <form>
-                        Name:<input id="formnpc" type="text" /><input id="formnpcnull" type="checkbox">null</input><br />
-                        Games:<input id="formnpcgames" type="text" /><br />
-                        Sprite:<input id="formrarity" type="text" /><br />
-                        Text1:<input id="formtext1" type="text" /><br />
-                        Text2:<input id="formtext2" type="text" /><input id="formtext2null" type="checkbox">null</input><br />
-                        Poke1:<input id="formnpcitem" type="text" /><input id="formtext2null" type="checkbox">null</input><br />
-                        Trainer:<input id="formhidden" type="checkbox">Trainer</input><br />
-                        Victory:<input id="formvictory" type="text" /><br />
-                        <input id="formpoke1null" type="checkbox" />Poke1:<input id="formpoke1" type="text" /><input id="formpoke1lvl" type="text" /><br />
-                        <input id="formpoke2null" type="checkbox" />Poke2:<input id="formpoke2" type="text" /><input id="formpoke2lvl" type="text" /><br />
-                        <input id="formpoke3null" type="checkbox" />Poke3:<input id="formpoke3" type="text" /><input id="formpoke3lvl" type="text" /><br />
-                        <input id="formpoke4null" type="checkbox" />Poke4:<input id="formpoke4" type="text" /><input id="formpoke4lvl" type="text" /><br />
-                        <input id="formpoke5null" type="checkbox" />Poke5:<input id="formpoke5" type="text" /><input id="formpoke5lvl" type="text" /><br />
-                        <input id="formpoke6null" type="checkbox" />Poke6:<input id="formpoke6" type="text" /><input id="formpoke6lvl" type="text" /><br />
-                        <input type="button" value="Place" onclick="placeNPC()" />
+                    <h2>Create Chunk</h2>
+                    <form id="createChunk">
+                        Start X:<input id="startx" type="text" size="5" />Y:<input id="starty" type="text" size="5" /><br />
+                        Size X:<input id="sizex" type="text" size="5" />Y:<input id="sizey" type="text" size="5" /><br />
+                        Name:<input id="name" type="text" /><br />
+                        Pallete:<input id="pallete" type="text" /><br />
+                        <input type="button" value="Create" onclick="createChunk()" />
+                    </form>
+                    <h2>Delete Last Chunk</h2>
+                    <input type="button" value="Delete & copy last array" onclick="deleteLastChunk()" />
+                    <h2>Create interior Map</h2>
+                    <form id="createInteriorMap">
+                        Name:<input id="name" type="text" /><br />
+                        Size X:<input id="sizex" type="text" size="5" />Y:<input id="sizey" type="text" size="5" /><br />
+                        Array:<input id="array" type="text" /><br />
+                        <input type="button" value="Create" onclick="createInteriorMap()" />
+                    </form>
+                    <h2>Create Interior Instance</h2>
+                    <form id="createInteriorInstance">
+                        Name:<input id="name" type="text" /><br />
+                        Map:<input id="map" type="text" /><br />
+                        Pallete:<input id="pallete" type="text" /><br />
+                        <input type="button" value="Create" onclick="createInteriorInstance()" />
+                    </form>
+                    <h2>Link Instance</h2>
+                    <form id="linkInstance">
+                        Chunk:<input id="chunk" type="text" /><br />
+                        Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
+                        Instance:<input id="instance" type="text" /><br />
+                        <input type="submit" value="Link" onclick="linkInstance()" />
                     </form>
                 </div>
                 <div id="sidebarEtcTool" hidden>
-                    <h1>Item Editor</h1>
-                    <form>
-                        Item:<input id="formitem" type="text" /><br />
-                        Games<input id="formitemgames" type="text" /><br />
-                        Rarity:<input id="formrarity" type="text" /><br />
-                        Type:<input id="formitemtype" type="text" /><br />
-                        Hidden:<input id="formhidden" type="checkbox">hidden</input>
-                        <input type="button" onclick="placeItem()">Place</input>
+                    <h2>Add Sign</h2>
+                    <form id="addSign">
+                        Chunk:<input id="chunk" type="text" /><br />
+                        Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
+                        Text:<input id="text" type="text" /><br />
+                        Picture: <input id="picture" type="text" /><br />
+                        <input type="submit" value="Add" onclick="addSign()" />
+                    </form>
+                    <h2>Add Item</h2>
+                    <form id="addItem">
+                        Chunk:<input id="chunk" type="text" /><br />
+                        Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
+                        Item:<input id="item" type="text" /><br />
+                        Rarity:<input id="rarity" type="text" /><br />
+                        Type:<input id="type" type="text" /><br />
+                        Other:<input id="other" type="text" /> <input id="rouble" type="checkbox" /> ₽ <br />
+                        Hidden: <input id="hidden" type="checkbox" /><br />
+                        <input type="submit" value="Add" onclick="addSign()" />
+                    </form>
+                    <h2>Add NPC</h2>
+                    <form id="addNPC">
+                        Chunk:<input id="chunk" type="text" /><br />
+                        Name:<input id="name" type="text" /><br />
+                        Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
+                        Games:<input id="games" type="text" value="RBY" /><br />
+                        Sprite:<input id="sprite" type="text" /><br />
+                        Text1:<input id="text1" type="text" /><br />
+                        Text2:<input id="text2" type="text" /><input id="formtext2null" type="checkbox">null</input><br />
+                        Loss Quote:<input id="loss" type="text" /><br />
+                        Loss Price:<input id="price" type="text" /><br />
+                        <input type="button" value="Add" onclick="addNPC()" />
+                    </form>
+                    <h2>Add Item to NPC</h2>
+                    <form id="addNPCItem">
+                        Chunk:<input id="chunk" type="text" /><br />
+                        Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
+                        Item:<input id="item" type="text" /><br />
+                        Rarity:<input id="rarity" type="text" /><br />
+                        Type:<input id="type" type="text" /><br />
+                        Other:<input id="other" type="text" /> <input id="rouble" type="checkbox" /> ₽ <br />
+                        Hidden: <input id="hidden" type="checkbox" /><br />
+                        <input type="button" value="Add" onclick="addNPCItem()" />
+                    </form>
+                    <h2>Add Pokemon to NPC</h2>
+                    <form id="addNPCPoke">
+                        Chunk:<input id="chunk" type="text" /><br />
+                        Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
+                        Species:<input id="species" type="text" /><br />
+                        Level:<input id="lvl" type="text" /><br />
+                        <input type="button" value="Add" onclick="addNPCPoke()" />
                     </form>
                 </div>
             </div>
