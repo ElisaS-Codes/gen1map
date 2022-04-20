@@ -14,9 +14,10 @@ Thats BS, so, I decided to make this site! Everything you need to know, in a sim
 
 ### Map Progress
 * Pallet Town: 90% (missing some Oak's Quots)
-* Viridian Town: 50%
+* Viridian Town: 70%
 * Pewter City: 50% (Missing interiors)
 * Route 1 : 100%
 * Route 2 : 50% (Missing interiors)
 * Route 3 : 50% (Missing interiors)
+* Route 4 : 30% (Missing interiors/some sprites)
 * Route 22 : 30%  (Missing interiors, extra Rival matches)

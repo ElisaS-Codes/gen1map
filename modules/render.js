@@ -1,3 +1,4 @@
+"use strict";
 let viewportPos = [400,3500]
 let viewportScale = 1
 let interiorPos = [0,0]
@@ -77,7 +78,7 @@ const drawMapChunk = (array, npcs, items, sizeX, sizeY, pallete) => { //TODO: fi
         )
     }
 
-    for(npc of npcs){
+    for(let npc of npcs){
 
         chunkImgCtx.drawImage(
             tempSpriteset,
@@ -86,7 +87,7 @@ const drawMapChunk = (array, npcs, items, sizeX, sizeY, pallete) => { //TODO: fi
         )
     }
 
-    for(item of items){
+    for(let item of items){
         let itemid = item.rarity > -1 ? item.rarity + 1 : item.other
         itemid = item.hidden ? 7 : itemid
         chunkImgCtx.drawImage(
@@ -102,7 +103,8 @@ const drawMapChunk = (array, npcs, items, sizeX, sizeY, pallete) => { //TODO: fi
 const redrawChunk = (chunk) => {
     fullMap.getContext("2d").clearRect(
         chunk.startX * 16, chunk.startY * 16,
-        chunk.sizeY, chunk.sizeX);
+        chunk.sizeY, chunk.sizeX
+    )
 
     fullMap.getContext("2d").drawImage(
         drawMapChunk(chunk.array, chunk.npc, chunk.items, chunk.sizeX, chunk.sizeY, chunk.pallete),
@@ -116,7 +118,7 @@ const drawMap = () => {
     fullMap.width = mapObj.sizeX * 16
     fullMap.height = mapObj.sizeY * 16
 
-    for(chunk of mapObj.chunks){
+    for(let chunk of mapObj.chunks){
         fullMap.getContext("2d").drawImage(
             drawMapChunk(chunk.array, chunk.npc, chunk.items, chunk.sizeX, chunk.sizeY, chunk.pallete),
             chunk.startX * 16, chunk.startY * 16

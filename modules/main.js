@@ -1,3 +1,4 @@
+"use strict";
 //LOAD
 const loadJSon = async (url) => {
     const response = await fetch(url);

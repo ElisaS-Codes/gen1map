@@ -1,3 +1,4 @@
+"use strict";
 let tiletemp = 1
 
 const enableEditor = () => {
@@ -17,7 +18,7 @@ const downloadMap = () => {
 }
 
 const selectTileElement = (id) => {
-    mapstate = 'placing'
+    viewportState = 'placing'
     tiletemp = id
 }
 
@@ -58,16 +59,16 @@ const editMap = (x,y,newTile) =>{
 }
 
 const squarePaint = (firstPos, secondPos, newTile) => {
-    let startx = (firstPos[0] < secondPos[0]) ? firstPos[0] + 1 : secondPos[0] + 1
-    let starty = (firstPos[1] < secondPos[1]) ? firstPos[1] : secondPos[1]
-    let rows = Math.abs(firstPos[0] - secondPos[0]) + 1
-    let cols = Math.abs(firstPos[1] - secondPos[1]) + 1
+    const startx = (firstPos[0] < secondPos[0]) ? firstPos[0] : secondPos[0]
+    const starty = (firstPos[1] < secondPos[1]) ? firstPos[1]: secondPos[1]
+    const rows = Math.abs(firstPos[0] - secondPos[0])
+    const cols = Math.abs(firstPos[1] - secondPos[1])
 
-    let chunk = calculateSourceChunk(firstPos[0],firstPos[1])
+    const chunk = calculateSourceChunk(firstPos[0],firstPos[1])
 
-    for( j = 0; j < cols; j++){
-        for( i = 0; i < rows; i++){
-            chunk.array[(startx -1 + i - chunk.startX) + (starty + j - chunk.startY) * chunk.sizeX] = newTile
+    for(let j = 0; j <= cols; j++){
+        for(let i = 0; i <= rows; i++){
+            chunk.array[(startx + i - chunk.startX) + (starty + j - chunk.startY) * chunk.sizeX] = newTile
         }
     }
 
@@ -103,7 +104,7 @@ const createChunk = () => {
     let y = parseInt(document.forms["createChunk"]["sizey"].value)
 
     let array = []
-    for(i =0; i < x*y; i++){
+    for(let i =0; i < x*y; i++){
         array.push(1)
     }
 

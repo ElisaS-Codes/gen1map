@@ -1,3 +1,4 @@
+"use strict";
 let viewportState = 'waiting'
 let tempPos = [0,0]
 
@@ -51,7 +52,7 @@ const keyPress = (event) => {
 
 const wheelScroll = (event) => {
 
-    mod = event.deltaY > 0 ? 0.1 : -0.1
+    let mod = event.deltaY > 0 ? 0.1 : -0.1
 
     if (viewportState != 'interior'){
         viewportScale += mod
@@ -91,7 +92,8 @@ const onMouseDown = (event) => {
         tempPos = [event.x, event.y]
     } else if (viewportState === 'placing'){
         editMap(tempCoords[0], tempCoords[1], tiletemp)
-        viewportState = 'placingdrag'
+        if (!event.shiftKey)
+            viewportState = 'placingdrag'
         tempPos = [event.x, event.y]
     } else if (viewportState === 'interior'){
         viewportState = 'interiordrag'
@@ -117,7 +119,9 @@ const onMouseUp = (event) => {
     if (viewportState === 'drag'){
         viewportState = 'waiting'
     } else if (viewportState === 'placingdrag'){
-        squarePaint(tempPos, calculateClickedTile(event.offsetX, event.offsetY), tiletemp)
+        squarePaint(calculateClickedTile(tempPos[0], tempPos[1]),tempCoords, tiletemp)
+        viewportState = 'waiting'
+    } else if (viewportState === 'placing' && !event.shiftKey){
         viewportState = 'waiting'
     } else if (viewportState === 'interiordrag'){
         viewportState = 'interior'
@@ -125,7 +129,7 @@ const onMouseUp = (event) => {
     }
 
     if (sourceChunk) {
-        for(interior of sourceChunk.interiors){
+        for(let interior of sourceChunk.interiors){
             if ((interior.x == tempCoords[0] - sourceChunk.startX) && (interior.y == tempCoords[1] - sourceChunk.startY)){
                 if (viewportState == 'interior') break
                 viewportState = 'interior'
@@ -150,7 +154,7 @@ const onMouseMove = (event) => {
 }
 
 const onMouseLeave = (event) => {
-    if (viewportState == 'drag')
+    if (viewportState == 'drag' || viewportState == 'interiordrag')
         viewportState = 'waiting'
 }
 
@@ -181,7 +185,7 @@ const calculateClickedTile = (x,y) => {
 const calculateSourceChunk = (x,y) => {
 
     if (viewportState != 'interior'){
-        for(chunk of mapObj.chunks){
+        for(let chunk of mapObj.chunks){
             if ((x >= chunk.startX && x <= chunk.startX + chunk.sizeX - 1) && (y >= chunk.startY && y <= chunk.startY + chunk.sizeY - 1)){
                 return chunk
             }
@@ -203,20 +207,20 @@ const updateStat = (mapCoords, chunk) => {
         }
         chunkName = chunk.name
 
-        for (i of chunk.signs) {
+        for (let i of chunk.signs) {
             if (i.x === chunkCoords[0] && i.y === chunkCoords[1]){
                 tempstats += "<p>Sign: " + i.text + "</p>"
             }
         }
 
-        for (i of chunk.items) {
+        for (let i of chunk.items) {
             if (i.x === chunkCoords[0] && i.y === chunkCoords[1]){
                 tempstats += "<p>ITEM: " + i.item + "</p>"
                 break
             }
         }
         
-        for (i of chunk.npc) {
+        for (let i of chunk.npc) {
             if (i.x === chunkCoords[0] && i.y === chunkCoords[1]){
                 if (i.name)
                     tempstats += "<p>Name: " + i.name + "</p>"
@@ -228,7 +232,7 @@ const updateStat = (mapCoords, chunk) => {
                         tempstats += "<p>Gives Item: " + i.item[0].item + "</p>"
                     } else {
                         tempstats += "<p>Items for sale:<ul>"
-                        for (it of i.item) {
+                        for (let it of i.item) {
                             tempstats += "<li>" + it.item + " - price:" + it.other + "</li>"
                         }
                         tempstats += "</ul></p>"    
@@ -237,7 +241,7 @@ const updateStat = (mapCoords, chunk) => {
                 
                 if (i.trainer){
                     tempstats += "<p>Pokemons:<ul>"
-                    for (pk of i.trainer) {
+                    for (let pk of i.trainer) {
                         tempstats += "<li>" + pk.species + " - LVL:" + pk.lvl + "</li>"
                     }
                     tempstats += "</ul></p>"
@@ -256,10 +260,10 @@ const updateStat = (mapCoords, chunk) => {
         }
 
         if (chunk.grass){
-            for (i of chunk.grass) {
+            for (let i of chunk.grass) {
                 if (((chunkCoords[0] >= i[0] && chunkCoords[0] <= i[2]) && (chunkCoords[1] >= i[1] && chunkCoords[1] <= i[3]))){
                     tempstats += "<p>Grass Encounters: <ul>"
-                    for( enc of chunk.grassencounters) {
+                    for(let enc of chunk.grassencounters) {
                         tempstats += "<li>" + enc.pokemon + " - " + enc.levels + " - " + enc.rate + "</li>"
                     }
                     tempstats += "</ul></p>"
@@ -269,18 +273,18 @@ const updateStat = (mapCoords, chunk) => {
         }
 
         if (chunk.water){
-            for (i of chunk.water) {
+            for (let i of chunk.water) {
                 if (((chunkCoords[0] >= i[0] && chunkCoords[0] <= i[2]) && (chunkCoords[1] >= i[1] && chunkCoords[1] <= i[3]))){
                     if (chunk.waterencounters != []){
                         tempstats += "<p>Surfing Encounters: <ul>"
-                        for( enc of chunk.waterencounters) {
+                        for(let enc of chunk.waterencounters) {
                             tempstats += "<li>" + enc.pokemon + " - " + enc.levels + " - " + enc.rate + "</li>"
                         }
                         tempstats += "</ul></p>"
                     }
                     if (chunk.fishing != []){
                         tempstats += "<p>Fishing Encounters: <ul>"
-                        for( enc of chunk.fishing) {
+                        for(let enc of chunk.fishing) {
                             tempstats += "<li>" + enc.pokemon + " - " + enc.levels + " - " + enc.rate + "</li>"
                         }
                         tempstats += "</ul></p>"
