@@ -16,6 +16,15 @@ const downloadMap = () => {
     dlAnchorElem.click()
     document.body.removeChild(dlAnchorElem)
 }
+const downloadInteriors = () => {
+    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(interiorsObj))
+    let dlAnchorElem = document.createElement('a')
+    dlAnchorElem.setAttribute("href",     dataStr     )
+    dlAnchorElem.setAttribute("download", "interiors.json")
+    document.body.appendChild(dlAnchorElem)
+    dlAnchorElem.click()
+    document.body.removeChild(dlAnchorElem)
+}
 
 const selectTileElement = (id) => {
     viewportState = 'placing'
@@ -150,7 +159,7 @@ const createInteriorMap = () => {
         "sizeX": parseInt(document.forms["createInteriorMap"]["sizex"].value),
         "sizeY": parseInt(document.forms["createInteriorMap"]["sizey"].value)
     }
-    interiors.template.push(newintmap)
+    interiorsObj.template.push(newintmap)
 }
 
 const createInteriorInstance = () => {
@@ -163,15 +172,15 @@ const createInteriorInstance = () => {
         "items": []
     }
 
-    interiors.instances.push(newinstance)
+    interiorsObj.instances.push(newinstance)
 }
 
 const linkInstance = () =>{
     let chunk = mapObj.chunks.find(i => i.name == document.forms["linkInstance"]["chunk"].value)
 
     let newLink = {
-        "x": parseInt(document.forms["createInteriorMap"]["posx"].value),
-        "y": parseInt(document.forms["createInteriorMap"]["posy"].value),
+        "x": parseInt(document.forms["linkInstance"]["posx"].value),
+        "y": parseInt(document.forms["linkInstance"]["posy"].value),
         "instance": document.forms["linkInstance"]["instance"].value
     }
 
@@ -179,8 +188,12 @@ const linkInstance = () =>{
 }
 
 const addSign = () => {
-
-    let chunk = mapObj.chunks.find(i => i.name == document.forms["addSign"]["chunk"].value)
+    let chunk
+    if (document.forms["addSign"]["interior"].value) {
+        chunk = interiorsObj.instances.find(i => i.name == document.forms["addSign"]["chunk"].value)
+    } else {
+        chunk = mapObj.chunks.find(i => i.name == document.forms["addSign"]["chunk"].value)
+    }
 
     let picture = document.forms["addSign"]["picture"].value
 
@@ -192,14 +205,19 @@ const addSign = () => {
     }
 
     chunk.signs.push(newSign)
-
 }
 
 const addItem = () => {
-    let chunk = mapObj.chunks.find(i => i.name == document.forms["addItem"]["chunk"].value)
+
+    let chunk
+    if (document.forms["addItem"]["interior"].value) {
+        chunk = interiorsObj.instances.find(i => i.name == document.forms["addItem"]["chunk"].value)
+    } else {
+        chunk = mapObj.chunks.find(i => i.name == document.forms["addItem"]["chunk"].value)
+    }
 
     let other = document.forms["addItem"]["other"].value + 
-        document.forms["addItem"]["other"].value ? "₽" : ""
+        document.forms["addItem"]["rouble"].value ? "₽" : ""
 
     let newItem = {
         "x": parseInt(document.forms["addItem"]["posx"].value),
@@ -215,9 +233,16 @@ const addItem = () => {
 }
 
 const addNPC = () => {
-    let chunk = mapObj.chunks.find(i => i.name == document.forms["linkInstance"]["chunk"].value)
+    
+    let chunk
+    if (document.forms["addNPC"]["interior"].value) {
+        chunk = interiorsObj.instances.find(i => i.name == document.forms["addNPC"]["chunk"].value)
+    } else {
+        chunk = mapObj.chunks.find(i => i.name == document.forms["addNPC"]["chunk"].value)
+    }
 
     let name = document.forms["addNPC"]["name"].value
+    let text2 = document.forms["addNPC"]["text2"].value
     let loss = document.forms["addNPC"]["loss"].value
     let price = document.forms["addNPC"]["price"].value
     
@@ -227,7 +252,7 @@ const addNPC = () => {
         "x": parseInt(document.forms["addNPC"]["posx"].value),
         "y": parseInt(document.forms["addNPC"]["posy"].value),
         "text": document.forms["addNPC"]["text1"].value,
-        "text2": document.forms["addNPC"]["text2"].value,
+        "text2": text2 == "" ? false : text2,
         "items": false,
         "trainer": false,
         "loss": loss == "" ? false : loss,
@@ -238,7 +263,14 @@ const addNPC = () => {
 }
 
 const addNPCItem = () => {
-    let chunk = mapObj.chunks.find(i => i.name == document.forms["addNPCItem"]["chunk"].value)
+    
+    let chunk
+    if (document.forms["addNPCItem"]["interior"].value) {
+        chunk = interiorsObj.instances.find(i => i.name == document.forms["addNPCItem"]["chunk"].value)
+    } else {
+        chunk = mapObj.chunks.find(i => i.name == document.forms["addNPCItem"]["chunk"].value)
+    }
+
     let npc = chunk.NPC.find(i => i.x == document.forms["addNPCItem"]["posx"].value
         && i.y == document.forms["addNPCItem"]["posy"].value)
 
@@ -259,7 +291,14 @@ const addNPCItem = () => {
 }
 
 const addNPCPoke = () => {
-    let chunk = mapObj.chunks.find(i => i.name == document.forms["addNPCPoke"]["chunk"].value)
+    
+    let chunk
+    if (document.forms["addNPCPoke"]["interior"].value) {
+        chunk = interiorsObj.instances.find(i => i.name == document.forms["addNPCPoke"]["chunk"].value)
+    } else {
+        chunk = mapObj.chunks.find(i => i.name == document.forms["addNPCPoke"]["chunk"].value)
+    }
+
     let npc = chunk.NPC.find(i => i.x == document.forms["addNPCPoke"]["posx"].value
         && i.y == document.forms["addNPCPoke"]["posy"].value)
 

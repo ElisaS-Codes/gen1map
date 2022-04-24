@@ -12,7 +12,10 @@
                 <canvas id="canvas" style="width: 100%; height: 100%;"></canvas>
             </div>
             <div id="sidebar" style="background-color: dimgray; display: flexbox; overflow: auto;">
-                <p><input type="button" value="Download map.json" onclick="downloadMap()" /></p>
+                <p>
+                    <input type="button" value="Download map.json" onclick="downloadMap()" />
+                    <input type="button" value="Download interiors.json" onclick="downloadInteriors()" />
+                </p>
                 <p id="editorTabs" hidden>
                     <span onclick="showTab(0)">Info</span> 
                     <span onclick="showTab(1)">Tiles</span> 
@@ -67,6 +70,7 @@
                 <div id="sidebarEtcTool" hidden>
                     <h2>Add Sign</h2>
                     <form id="addSign">
+                        Interior: <input id="interior" type="checkbox" /><br />
                         Chunk:<input id="chunk" type="text" /><br />
                         Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
                         Text:<input id="text" type="text" /><br />
@@ -75,6 +79,7 @@
                     </form>
                     <h2>Add Item</h2>
                     <form id="addItem">
+                        Interior: <input id="interior" type="checkbox" /><br />
                         Chunk:<input id="chunk" type="text" /><br />
                         Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
                         Item:<input id="item" type="text" /><br />
@@ -82,10 +87,11 @@
                         Type:<input id="type" type="text" /><br />
                         Other:<input id="other" type="text" /> <input id="rouble" type="checkbox" /> ₽ <br />
                         Hidden: <input id="hidden" type="checkbox" /><br />
-                        <input type="button" value="Add" onclick="addSign()" />
+                        <input type="button" value="Add" onclick="addItem()" />
                     </form>
                     <h2>Add NPC</h2>
                     <form id="addNPC">
+                        Interior: <input id="interior" type="checkbox" /><br />
                         Chunk:<input id="chunk" type="text" /><br />
                         Name:<input id="name" type="text" /><br />
                         Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
@@ -99,6 +105,7 @@
                     </form>
                     <h2>Add Item to NPC</h2>
                     <form id="addNPCItem">
+                        Interior: <input id="interior" type="checkbox" /><br />
                         Chunk:<input id="chunk" type="text" /><br />
                         Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
                         Item:<input id="item" type="text" /><br />
@@ -110,6 +117,7 @@
                     </form>
                     <h2>Add Pokemon to NPC</h2>
                     <form id="addNPCPoke">
+                        Interior: <input id="interior" type="checkbox" /><br />
                         Chunk:<input id="chunk" type="text" /><br />
                         Pos X:<input id="posx" type="text" size="5" />Y:<input id="posy" type="text" size="5" /><br />
                         Species:<input id="species" type="text" /><br />
